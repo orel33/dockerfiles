@@ -1,97 +1,88 @@
 # Dockerfile "myubuntu"
 
-FROM ubuntu:20.10
+FROM ubuntu:latest
 
 LABEL maintainer="aurelien.esnard@u-bordeaux.fr"
 WORKDIR /home/docker
 ARG DEBIAN_FRONTEND=noninteractive
 
 ### apt tools
-RUN apt-get update
-RUN apt-get install -yq build-essential apt-utils apt-file gdebi
+RUN apt update
+RUN apt install -yq build-essential apt-utils apt-file gdebi
 
 ### set locales
-RUN apt-get install -yq locales-all
+RUN apt install -yq locales-all
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 ### misc tools
-RUN apt-get install -yq bash bash-completion tmux screen expect zip unzip
-RUN apt-get install -yq dialog xtermcontrol shc indent ldap-utils
-RUN apt-get install -yq moreutils bc sudo sbcl graphviz
+RUN apt install -yq bash bash-completion tmux screen expect zip unzip
+RUN apt install -yq dialog xtermcontrol shc indent ldap-utils
+RUN apt install -yq moreutils bc sudo sbcl graphviz
 
 ### editing
-RUN apt-get install -yq emacs-nox vim nano
+RUN apt install -yq emacs-nox vim nano
 
 ### C/C++ programming
-RUN apt-get install -yq gcc g++ gcc-multilib g++-multilib
-RUN apt-get install -yq gcc-8 g++-8 libc6 libc6-dev libc6-dbg
+RUN apt install -yq gcc g++ gcc-multilib g++-multilib
+RUN apt install -yq gcc-8 g++-8 libc6 libc6-dev libc6-dbg
 
 ### programming tools
-RUN apt-get install -yq util-linux manpages gdb valgrind 
-RUN apt-get install -yq automake autotools-dev
-RUN apt-get install -yq cmake cmake-curses-gui cmake-data cmake-doc
-RUN apt-get install -yq git subversion
-RUN apt-get install -yq clang-format clang-format-8 clang-format-9 clang-format-10 clang-format-11
-RUN apt-get install -yq flex bison libbison-dev
-RUN apt-get install -yq ncurses-bin libncurses-dev libreadline-dev
-RUN apt-get install -yq tcl8.6 tcl8.6-dev tk8.6 tk8.6-dev
-RUN apt-get install -yq ruby
-# RUN gem install git_fame
+RUN apt install -yq util-linux manpages gdb valgrind
+RUN apt install -yq automake autotools-dev
+RUN apt install -yq cmake cmake-curses-gui cmake-data cmake-doc
+RUN apt install -yq git subversion
+RUN apt install -yq clang-format clang-format-8 clang-format-9 clang-format-10 clang-format-11
+RUN apt install -yq flex bison libbison-dev
+RUN apt install -yq ncurses-bin libncurses-dev libreadline-dev
+RUN apt install -yq tcl8.6 tcl8.6-dev tk8.6 tk8.6-dev
+RUN apt install -yq ruby
+RUN apt install -yq doxygen
 
 ### python3
-RUN apt-get install -yq python3 python3-pip python3-numpy python3-termcolor pylint3
+RUN apt install -yq python3 python3-pip python3-numpy python3-termcolor pylint3
 RUN pip3 install --upgrade pip
-RUN apt-get install -yq radon
+RUN apt install -yq radon
 RUN pip3 install git-fame
 
 ### networking
-RUN apt-get install -yq net-tools socat rlwrap wget curl tcpdump netcat-openbsd telnet
-RUN apt-get install -yq apache2 telnetd ftpd inetutils-inetd
-RUN apt-get install -yq python3-scapy
+RUN apt install -yq net-tools socat rlwrap wget curl tcpdump netcat-openbsd telnet
+RUN apt install -yq apache2 telnetd ftpd inetutils-inetd
+RUN apt install -yq python3-scapy
 
 # graphics app
-RUN apt-get install -yq xterm x11-apps mesa-utils libgl1-mesa-dev libgl1-mesa-glx
-RUN apt-get install -yq libsdl2-dev libsdl2-mixer-dev libsdl2-image-dev libsdl2-gfx-dev libsdl2-ttf-dev libsdl2-net-dev
-RUN apt-get install -yq python3-pygame python3-pyx
+RUN apt install -yq xterm x11-apps mesa-utils libgl1-mesa-dev libgl1-mesa-glx
+RUN apt install -yq libsdl2-dev libsdl2-mixer-dev libsdl2-image-dev libsdl2-gfx-dev libsdl2-ttf-dev libsdl2-net-dev
+RUN apt install -yq python3-pygame python3-pyx
 
 # X11 & VNC
-RUN apt-get install -yq xserver-xorg x11-xserver-utils
-RUN apt-get install -yq xfonts-base xfonts-75dpi xfonts-100dpi xfonts-scalable xfonts-cyrillic
-RUN apt-get install -yq xvfb x11vnc
-# RUN apt-get install -yq tightvncserver xtightvncviewer
-# RUN apt-get install -yq tigervnc-standalone-server tigervnc-common
+RUN apt install -yq xserver-xorg x11-xserver-utils
+RUN apt install -yq xfonts-base xfonts-75dpi xfonts-100dpi xfonts-scalable xfonts-cyrillic
+RUN apt install -yq xvfb x11vnc
 
 # Window Manager
-RUN apt-get install -yq fluxbox lxterminal lxsession
-# RUN apt-get install -yq xmonad xmobar
-# RUN apt-get install -yq i3
-
-# remove hardware-accelerated Mesa libraries and install the software-only render
-# RUN apt-get install -yq libgl1-mesa-swx11
+RUN apt install -yq fluxbox lxterminal lxsession
 
 ### BD Web
-RUN apt-get install -yq python3-psycopg2 python3-flask
-RUN apt-get install -yq gedit firefox
+RUN apt install -yq python3-psycopg2 python3-flask
+RUN apt install -yq gedit firefox
 
 ### Init Info
-RUN apt-get install -yq  imagemagick graphviz
+RUN apt install -yq  imagemagick graphviz
 RUN pip3 install Pillow numpy pytest tk requests scspell3k pygame
 
-### clean
-RUN apt-get -yq autoremove
-
-### VPL Toolkit
-RUN git clone https://github.com/orel33/vpltoolkit.git /vpltoolkit
+### Latex
+RUN apt install -yq texlive-xetex texlive-fonts-recommended
 
 ### Misc
-RUN apt-get install -yq rename a2ps enscript
-RUN apt-get install -yq libglib2.0-dev
-RUN apt-get install -yq pandoc texlive-xetex tree texlive-fonts-recommended
+RUN apt install -yq rename a2ps enscript
+RUN apt install -yq libglib2.0-dev
+RUN apt install -yq pandoc tree
+RUN pip3 install mkdocs
 
 # clean
-RUN apt-get -y autoremove
+RUN apt -y autoremove
 
 # add user toto
 RUN useradd -ms /bin/bash toto
@@ -99,13 +90,5 @@ RUN echo 'toto ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 RUN gpasswd -a toto sudo
 RUN echo "toto:toto" | chpasswd
 RUN chown -R toto:toto /home/toto
-
-# add user tutu
-RUN useradd -ms /bin/bash tutu
-RUN echo 'tutu ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
-RUN gpasswd -a tutu sudo
-RUN echo "tutu:tutu" | chpasswd
-RUN chown -R tutu:tutu /home/tutu
-
 
 # EOF
