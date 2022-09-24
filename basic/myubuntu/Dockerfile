@@ -80,6 +80,7 @@ RUN apt install -yq rename a2ps enscript
 RUN apt install -yq libglib2.0-dev
 RUN apt install -yq pandoc tree
 RUN pip3 install mkdocs
+RUN apt install -yq rubber
 
 # clean
 RUN apt -y autoremove
