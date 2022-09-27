@@ -8,4 +8,4 @@ set -x
 # docker build -t registry.gitlab.com/orel33/test .
 # docker push registry.gitlab.com/orel33/test
 
-docker build -t "orel33/myubuntu:latest" . && docker push "orel33/myubuntu:latest"
+docker build --no-cache -t "orel33/myubuntu:latest" . && docker push "orel33/myubuntu:latest"

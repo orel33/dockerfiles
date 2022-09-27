@@ -1,7 +1,7 @@
 # Dockerfile "myubuntu"
 # Mainly used for GitLab CI.
 
-FROM ubuntu:22.04
+FROM ubuntu:latest
 
 LABEL maintainer="aurelien.esnard@u-bordeaux.fr"
 WORKDIR /home/docker
@@ -89,6 +89,9 @@ RUN apt install -yq net-tools wget curl
 
 ### hilisit
 # RUN apt install -yq libreoffice-common
+
+### some addons in almost last layer
+RUN apt install -yq findutils
 
 # clean
 RUN apt -y autoremove
