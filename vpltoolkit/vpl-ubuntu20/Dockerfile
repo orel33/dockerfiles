@@ -41,12 +41,8 @@ RUN apt install -yq flex bison libbison-dev
 RUN apt install -yq ncurses-bin libncurses-dev libreadline-dev
 RUN apt install -yq tcl8.6 tcl8.6-dev tk8.6 tk8.6-dev
 RUN apt install -yq ruby
-# RUN gem install git_fame
 
 ### python3
-# RUN apt install -yq software-properties-common
-# RUN add-apt-repository -y ppa:deadsnakes/ppa
-# RUN apt install -yq python3.11
 RUN apt install -yq python3 python3-pip python3-numpy python3-termcolor pylint
 RUN pip3 install --upgrade pip
 RUN apt install -yq radon
