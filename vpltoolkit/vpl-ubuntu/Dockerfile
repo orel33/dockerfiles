@@ -83,6 +83,7 @@ RUN apt-get install -yq rename a2ps enscript
 RUN apt-get install -yq libglib2.0-dev
 RUN apt-get install -yq tree
 RUN apt-get install -yq jq
+RUN apt-get install -yq pdftk
 
 ### clean
 RUN apt-get -yq autoremove
