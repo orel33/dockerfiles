@@ -62,6 +62,7 @@ RUN apt install -yq jq
 RUN apt install -yq mailutils
 RUN apt install -yq iputils-ping
 RUN apt install -yq pandoc wkhtmltopdf sed
+RUN apt-get install -yq pdftk
 
 ### clean
 RUN apt -yq autoremove
