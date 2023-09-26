@@ -55,6 +55,8 @@ RUN apt install -yq iputils-ping
 ### latex
 RUN apt install -yq texlive-xetex texlive-fonts-recommended texlive-extra-utils
 RUN apt install -yq texlive-latex-base texlive-latex-extra texlive-lang-french
+RUN apt install -yq texlive-luatex texlive-fonts-extra
+RUN apt install -yq fonts-emojione fonts-noto-color-emoji
 RUN apt install -yq latexmk rubber
 
 ### pandoc & mkdocs

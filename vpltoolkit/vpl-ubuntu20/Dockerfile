@@ -54,7 +54,13 @@ RUN apt install -yq apache2 telnetd ftpd inetutils-inetd
 RUN apt install -yq python3-scapy
 RUN apt install -yq rpcbind libtirpc3 libtirpc-dev
 
-### Misc
+### graphics app
+RUN apt-get install -yq xterm x11-apps mesa-utils libgl1-mesa-dev libgl1-mesa-glx
+RUN apt-get install -yq libsdl2-dev libsdl2-mixer-dev libsdl2-image-dev libsdl2-gfx-dev libsdl2-ttf-dev libsdl2-net-dev
+RUN apt-get install -yq python3-pygame python3-pyx
+RUN apt-get install -yq libgtk-3-0 libgtk-3-bin libgtk-3-common libgtk-3-dev
+
+### misc
 RUN apt install -yq rename a2ps enscript
 RUN apt install -yq libglib2.0-dev
 RUN apt install -yq tree
@@ -62,7 +68,7 @@ RUN apt install -yq jq
 RUN apt install -yq mailutils
 RUN apt install -yq iputils-ping
 RUN apt install -yq pandoc wkhtmltopdf sed
-RUN apt-get install -yq pdftk
+# RUN apt-get install -yq pdftk
 
 ### clean
 RUN apt -yq autoremove
