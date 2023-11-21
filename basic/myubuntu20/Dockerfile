@@ -74,6 +74,11 @@ RUN apt install -yq moreutils bc sudo sbcl
 RUN apt install -yq findutils
 # RUN apt-get install -yq pdftk
 
+### clang-format-14
+RUN echo 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-14 main' >> /etc/apt/sources.list
+RUN wget https://apt.llvm.org/llvm-snapshot.gpg.key && apt-key add llvm-snapshot.gpg.key
+RUN apt update && apt install -yq clang-format-14
+
 ### clean
 RUN apt -yq autoremove
 
