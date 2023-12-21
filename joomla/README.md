@@ -43,7 +43,7 @@ First, open browser at <http://localhost:8080>, and let'starts the installation 
 * Database name: `joomla`
 * Database host: `mysql` (docker link)
 * Database user: `admin`
-* Database password: `admin`
+* Database password: `admin` (or `example` for `root` user)
 * Datable table prefix: `j4_`
 
 ---
