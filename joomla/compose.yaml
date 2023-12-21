@@ -3,19 +3,20 @@
 services:
   joomla:
     # image: joomla:php8.2-apache
-    image: orel33/myjoomla
     build: ./myjoomla
+    image: orel33/myjoomla
+    depends_on: [ mysql ]
     restart: always
-    hostname: joomla
+    # hostname: joomla
     links:
       - mysql
     ports:
       - 8080:80
     environment:
       JOOMLA_DB_HOST: mysql
-      # JOOMLA_DB_NAME: joomla  # default ?
-      # JOOMLA_DB_USER: joomla  # default is root
-      JOOMLA_DB_PASSWORD: example
+      JOOMLA_DB_NAME: joomla
+      JOOMLA_DB_USER: admin
+      JOOMLA_DB_PASSWORD: admin
     # volumes:
     #   - ./www:/var/www/html
 
@@ -23,16 +24,18 @@ services:
     image: mysql:5.6
     # image: mariadb:10.11
     restart: always
-    hostname: mysql
+    # hostname: mysql
     environment:
-      # MYSQL_USER: joomla
-      MYSQL_ROOT_PASSWORD: example
+      MYSQL_ROOT_PASSWORD: example  # 'root' user password
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
       MYSQL_DATABASE: joomla
     # volumes:
     #   - ./database:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin
+    depends_on: [ mysql ]
     restart: always
     links:
       - mysql
