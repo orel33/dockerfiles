@@ -1,5 +1,7 @@
 # README
 
+*This README is to explain how install Joomla 4 in a Docker container.* 
+
 ## Docker for Joomla 4
 
 ## Configuration
