@@ -1,7 +1,7 @@
 # Dockerfile "mydebian"
 # Mainly used for GitLab CI.
 
-# debian10
+# debian12
 FROM debian:bookworm
 
 LABEL maintainer="aurelien.esnard@u-bordeaux.fr"
