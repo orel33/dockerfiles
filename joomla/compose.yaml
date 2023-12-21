@@ -1,0 +1,43 @@
+### Docker Compose for Joomla 4 ###
+
+services:
+  joomla:
+    # image: joomla:php8.2-apache
+    image: orel33/myjoomla
+    build: ./myjoomla
+    restart: always
+    hostname: joomla
+    links:
+      - mysql
+    ports:
+      - 8080:80
+    environment:
+      JOOMLA_DB_HOST: mysql
+      # JOOMLA_DB_NAME: joomla  # default ?
+      # JOOMLA_DB_USER: joomla  # default is root
+      JOOMLA_DB_PASSWORD: example
+    # volumes:
+    #   - ./www:/var/www/html
+
+  mysql:
+    image: mysql:5.6
+    # image: mariadb:10.11
+    restart: always
+    hostname: mysql
+    environment:
+      # MYSQL_USER: joomla
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: joomla
+    # volumes:
+    #   - ./database:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    links:
+      - mysql
+    ports:
+      - 8081:80
+    environment:
+      - PMA_HOST=mysql
+
