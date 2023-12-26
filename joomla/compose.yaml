@@ -1,8 +1,11 @@
 ### Docker Compose for Joomla 4 ###
 
 services:
-  joomla:
-    # image: joomla:php8.2-apache
+
+  myjoomla:
+    # image: joomla:php8.2-apache         # ok for joomla4
+    # image: joomla:3.10.0-php7.3-apache    # ok for joomla3 (grimperoots)
+    # image: php:7.2-apache
     build: ./myjoomla
     image: orel33/myjoomla
     depends_on: [ mysql ]
@@ -17,8 +20,6 @@ services:
       JOOMLA_DB_NAME: joomla
       JOOMLA_DB_USER: admin
       JOOMLA_DB_PASSWORD: admin
-    # volumes:
-    #   - ./www:/var/www/html
 
   mysql:
     image: mysql:5.6

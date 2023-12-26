@@ -1,8 +1,8 @@
 # README
 
-*This README is to explain how install Joomla 4 in a Docker container.* 
+*This README is to explain how to install Joomla in a Docker container.*
 
-## Docker for Joomla 4
+## Docker for Joomla
 
 ## Configuration
 
@@ -23,7 +23,7 @@ That is why we build a Docker image `orel/myjoomla` to fix this bug.
 Let's start...
 
 ```bash
-$ docker compose up   # build & start
+$ docker compose up     # build & start
 ```
 
 Then, open browser at <http://localhost:8080> for the Joomla web site.
@@ -38,7 +38,8 @@ $ docker compose down # stop & removes all
 
 ## Joomla Installation
 
-First, open browser at <http://localhost:8080>, and let'starts the installation process...
+First, open browser at <http://localhost:8080>, and let'starts the Joomla
+installation process.
 
 * Joomla user: `joomla`
 * Joomla password: `joomlajoomla` (12 characters required)
@@ -47,5 +48,15 @@ First, open browser at <http://localhost:8080>, and let'starts the installation 
 * Database user: `admin`
 * Database password: `admin` (or `example` for `root` user)
 * Datable table prefix: `j4_`
+
+To restore a Joomla *backup* with *kickstart* method, open
+<http://localhost:8080/kickstart.php>.
+
+**Debug**
+
+```bash
+$ docker exec -it joomla-myjoomla-1 bash
+$ chmod -R 777 /backup
+```
 
 ---
